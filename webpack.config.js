@@ -1,5 +1,4 @@
 
-
 const { DefinePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
@@ -38,8 +37,8 @@ module.exports = merge(common, {
     port: 8080
   },
   externals: {
-    react: "React",
-    "react-dom": "ReactDOM"
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   plugins: [
     new DefinePlugin({
