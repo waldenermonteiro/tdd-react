@@ -2,8 +2,8 @@ import React from 'react'
 
 import LoginHeader from '@/presentation/components/login-header/login-header'
 import Input from '@/presentation/components/input/input'
-import Spinner from '@/presentation/components/spinner/spinner'
 import Footer from '@/presentation/components/footer/footer'
+import FormStatus from '@/presentation/components/form-status/form-status'
 
 import Styles from './login-styles.scss'
 
@@ -29,10 +29,7 @@ export default function login (): React.ReactElement {
           Entrar
         </button>
         <span className={Styles.link}>Criar conta</span>
-        <div className={Styles.errorWrap}>
-          <Spinner className={Styles.spinner} />
-          <span className={Styles.error}>Error</span>
-        </div>
+        <FormStatus />
       </form>
       <Footer />
     </div>
