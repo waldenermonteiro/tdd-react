@@ -1,6 +1,7 @@
 import React from 'react'
 
 import LoginHeader from '@/presentation/components/login-header/login-header'
+import Input from '@/presentation/components/input/input'
 import Spinner from '@/presentation/components/spinner/spinner'
 import Footer from '@/presentation/components/footer/footer'
 
@@ -12,25 +13,18 @@ export default function login (): React.ReactElement {
       <LoginHeader />
       <form action="" className={Styles.form}>
         <h2>Login</h2>
-        <div className={Styles.inputWrap}>
-          <input
-            type="email"
-            name="email"
-            id=""
-            placeholder="Digite seu e-mail"
-          />
-          <span className={Styles.inputStatus}></span>
-        </div>
-        <div className={Styles.inputWrap}>
-          <input
-            type="password"
-            name="password"
-            id=""
-            placeholder="Digite sua senha"
-          />
-          <span className={Styles.inputStatus}></span>
-        </div>
-
+        <Input
+          type="email"
+          name="email"
+          id=""
+          placeholder="Digite seu e-mail"
+        />
+        <Input
+          type="password"
+          name="password"
+          id=""
+          placeholder="Digite sua senha"
+        />
         <button className={Styles.submit} type="submit">
           Entrar
         </button>
