@@ -1,6 +1,6 @@
 
-const { DefinePlugin } = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const { DefinePlugin } = require('webpack')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 
@@ -39,13 +39,13 @@ module.exports = merge(common, {
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM'
-  },
-  plugins: [
-    new DefinePlugin({
-      'process.env.API_URL': JSON.stringify('http://fordevs.herokuapp.com/api')
-    }),
-    new HtmlWebpackPlugin({
-      template: './template.dev.html'
-    })
-  ]
+  }
+  // plugins: [
+  //   new DefinePlugin({
+  //     'process.env.API_URL': JSON.stringify('http://fordevs.herokuapp.com/api')
+  //   }),
+  //   new HtmlWebpackPlugin({
+  //     template: './template.dev.html'
+  //   })
+  // ]
 })
