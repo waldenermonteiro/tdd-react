@@ -50,7 +50,6 @@ describe('Login Component', () => {
     const { sut, validationSpy } = makeSut()
 
     const emailInput = sut.getByTestId('email')
-
     const fakeEmail = faker.internet.email()
 
     fireEvent.input(emailInput, { target: { value: fakeEmail } })
@@ -63,7 +62,6 @@ describe('Login Component', () => {
     const { sut, validationSpy } = makeSut()
 
     const passwordInput = sut.getByTestId('password')
-
     const fakePassword = faker.internet.password()
 
     fireEvent.input(passwordInput, { target: { value: fakePassword } })
@@ -76,7 +74,6 @@ describe('Login Component', () => {
     const { sut, validationSpy } = makeSut()
 
     const emailInput = sut.getByTestId('email')
-
     const fakeEmail = faker.internet.email()
 
     fireEvent.input(emailInput, { target: { value: fakeEmail } })
@@ -91,7 +88,6 @@ describe('Login Component', () => {
     const { sut, validationSpy } = makeSut()
 
     const passwordInput = sut.getByTestId('password')
-
     const fakePassword = faker.internet.password()
 
     fireEvent.input(passwordInput, { target: { value: fakePassword } })
@@ -107,7 +103,6 @@ describe('Login Component', () => {
     validationSpy.errorMessage = null
 
     const emailInput = sut.getByTestId('email')
-
     const fakeEmail = faker.internet.email()
 
     fireEvent.input(emailInput, { target: { value: fakeEmail } })
@@ -123,7 +118,6 @@ describe('Login Component', () => {
     validationSpy.errorMessage = null
 
     const passwordInput = sut.getByTestId('password')
-
     const fakePassword = faker.internet.password()
 
     fireEvent.input(passwordInput, { target: { value: fakePassword } })
@@ -132,5 +126,23 @@ describe('Login Component', () => {
 
     expect(passwordStatus.title).toBe('Tudo Certo!')
     expect(passwordStatus.textContent).toBe('🟢')
+  })
+
+  test('should enable submit button if form is valid', () => {
+    const { sut, validationSpy } = makeSut()
+    validationSpy.errorMessage = null
+
+    const emailInput = sut.getByTestId('email')
+    const fakeEmail = faker.internet.email()
+
+    const passwordInput = sut.getByTestId('password')
+    const fakePassword = faker.internet.password()
+
+    fireEvent.input(emailInput, { target: { value: fakeEmail } })
+    fireEvent.input(passwordInput, { target: { value: fakePassword } })
+
+    const submitButton = sut.getByTestId('submit') as HTMLButtonElement
+
+    expect(submitButton.disabled).toBeFalsy()
   })
 })
