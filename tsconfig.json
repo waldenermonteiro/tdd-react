@@ -11,7 +11,7 @@
       "@/*": ["*"]
     },
     "allowJs": true,
-    "strict": true,
+    "strict": false,
     "resolveJsonModule": true,
     // "isolatedModules": false,
     // "module": "commonjs"
