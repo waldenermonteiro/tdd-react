@@ -15,20 +15,23 @@ import Styles from './login-styles.scss'
 
 type Props = {
   validation?: Validation
-}
+};
 
 export default function login ({ validation }: Props): React.ReactElement {
   const [state, setState] = useState({
     isLoading: false,
     email: '',
     password: '',
-    emailError: 'Campo obrigatório',
-    passwordError: 'Campo obrigatório',
+    emailError: '',
+    passwordError: '',
     mainError: ''
   })
 
   useEffect(() => {
-    validation.validate('email', state.email)
+    setState((oldState) => ({
+      ...oldState,
+      emailError: validation.validate('email', state.email)
+    }))
   }, [state.email])
 
   useEffect(() => {
@@ -38,7 +41,7 @@ export default function login ({ validation }: Props): React.ReactElement {
   return (
     <div className={Styles.login}>
       <LoginHeader />
-      <Context.Provider value={{ state, setState }} >
+      <Context.Provider value={{ state, setState }}>
         <form action="" className={Styles.form}>
           <h2>Login</h2>
           <Input
