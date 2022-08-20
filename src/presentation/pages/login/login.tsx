@@ -35,7 +35,10 @@ export default function login ({ validation }: Props): React.ReactElement {
   }, [state.email])
 
   useEffect(() => {
-    validation.validate('password', state.password)
+    setState((oldState) => ({
+      ...oldState,
+      passwordError: validation.validate('password', state.password)
+    }))
   }, [state.password])
 
   return (
