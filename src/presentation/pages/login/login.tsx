@@ -61,7 +61,7 @@ export default function login ({ validation }: Props): React.ReactElement {
           />
           <button
             data-testid="submit"
-            disabled
+            disabled={!!state.emailError || !!state.passwordError}
             className={Styles.submit}
             type="submit"
           >
