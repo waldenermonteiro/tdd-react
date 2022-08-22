@@ -41,11 +41,20 @@ export default function login ({ validation }: Props): React.ReactElement {
     }))
   }, [state.password])
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+
+    setState((oldState) => ({
+      ...oldState,
+      isLoading: true
+    }))
+  }
+
   return (
     <div className={Styles.login}>
       <LoginHeader />
       <Context.Provider value={{ state, setState }}>
-        <form action="" className={Styles.form}>
+        <form action="" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
           <Input
             type="email"
