@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, useEffect } from 'react'
+
+import { Authentication } from '@/domain/usecases'
 
 import {
   LoginHeader,
@@ -15,9 +18,13 @@ import Styles from './login-styles.scss'
 
 type Props = {
   validation?: Validation
+  authentication?: Authentication
 };
 
-export default function login ({ validation }: Props): React.ReactElement {
+export default function login ({
+  validation,
+  authentication
+}: Props): React.ReactElement {
   const [state, setState] = useState({
     isLoading: false,
     email: '',
@@ -41,20 +48,27 @@ export default function login ({ validation }: Props): React.ReactElement {
     }))
   }, [state.password])
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault()
 
     setState((oldState) => ({
       ...oldState,
       isLoading: true
     }))
+
+    await authentication.auth({
+      email: state.email,
+      password: state.password
+    })
   }
 
   return (
     <div className={Styles.login}>
       <LoginHeader />
       <Context.Provider value={{ state, setState }}>
-        <form action="" className={Styles.form} onSubmit={handleSubmit}>
+        <form action="" className={Styles.form} onSubmit={async (event) => await handleSubmit(event)}>
           <h2>Login</h2>
           <Input
             type="email"
